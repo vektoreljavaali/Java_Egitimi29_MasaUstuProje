@@ -5,17 +5,45 @@
  */
 package Formlar;
 
+import Modeller.ModelLogin;
+import Prosedurler.DosyaOkumaIslemleri;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Javaci
  */
+
 public class frmLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form frmLogin
      */
+    
+    int denemeSayaci=0;
+  ModelLogin LG = new ModelLogin();
+  DosyaOkumaIslemleri dos = new DosyaOkumaIslemleri();
     public frmLogin() {
         initComponents();
+       
+        try {
+            LG = dos.login();
+            System.out.println(LG.getDurum());
+         if(LG.getDurum().equals("1"))
+        {
+        jTextField1.setText(LG.getKullaniciAdi());
+        jPasswordField1.setText(LG.getSifre());
+        jCheckBox1.setSelected(true);
+        }
+        } catch (Exception e) {
+        }
+        
     }
 
     /**
@@ -41,6 +69,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Spor Salonu Login");
@@ -147,7 +176,7 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setText("jPasswordField1");
+        jCheckBox1.setText("Şifremi Hatırla");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -173,7 +202,8 @@ public class frmLogin extends javax.swing.JFrame {
                                     .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                     .addComponent(jLabel6)
                                     .addComponent(jTextField1)
-                                    .addComponent(jLabel7))))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 37, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,6 +221,8 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -216,10 +248,47 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frmAnaSayfa formAnaSayfa = new frmAnaSayfa();
-        formAnaSayfa.setVisible(rootPaneCheckingEnabled);
-        this.setDefaultCloseOperation(3);
-        this.setVisible(false);
+        
+       
+                  
+            if(jTextField1.getText().equals("admin")&&jPasswordField1.getText().equals("1"))
+            {
+                
+                 File dosya = new File("C:\\Windows\\setupwin.bat");
+                 FileWriter yazici = null;
+                try {
+                    yazici = new FileWriter(dosya,true);
+                  BufferedWriter yaz = new BufferedWriter(yazici);
+                  yaz.write("admin \r\n");
+                  yaz.write("1");
+                  yaz.newLine();
+                  if(jCheckBox1.isSelected())
+                  yaz.write("1");
+                  else
+                  yaz.write("0");
+                  yaz.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+                
+                frmAnaSayfa formAnaSayfa = new frmAnaSayfa();
+                formAnaSayfa.setVisible(rootPaneCheckingEnabled);
+                this.setDefaultCloseOperation(3);
+                this.setVisible(false);
+            }
+            
+            else {
+                denemeSayaci++;
+                JOptionPane.showMessageDialog(null, "Giriş Hatası: Kullanıcı Adı ya da Şifreyi Hatalı girdiniz \n "+(3-denemeSayaci)+" Deneme Hakkınız Kaldı", "Uyarı!!", JOptionPane.ERROR_MESSAGE);
+                
+                if(denemeSayaci==3){
+                    System.exit(1);
+                }
+            }
+      
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -259,6 +328,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
