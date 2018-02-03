@@ -5,12 +5,18 @@
  */
 package DBFramework;
 
+import java.util.List;
+
 /**
  *
  * @author vektorel
  */
 public interface ICRUD {
     
-    public 
+    public void Kaydet(Object o);
+    public void Duzenle(Object o);
+    public void Sil(long id);
+    public List<Object> Listele();
+    public Object Bul(long id);
     
 }
