@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VeriTabani;
+package DBConnections;
 
 /**
  *
- * @author Javaci
+ * @author vektorel
  */
-public class DBConnection {
+public class staticValues {
     
 }

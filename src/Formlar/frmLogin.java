@@ -5,8 +5,8 @@
  */
 package Formlar;
 
-import Modeller.ModelLogin;
-import Prosedurler.DosyaOkumaIslemleri;
+
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -27,22 +27,11 @@ public class frmLogin extends javax.swing.JFrame {
      */
     
     int denemeSayaci=0;
-  ModelLogin LG = new ModelLogin();
-  DosyaOkumaIslemleri dos = new DosyaOkumaIslemleri();
+  
+  
     public frmLogin() {
         initComponents();
-       
-        try {
-            LG = dos.login();
-            System.out.println(LG.getDurum());
-         if(LG.getDurum().equals("1"))
-        {
-        jTextField1.setText(LG.getKullaniciAdi());
-        jPasswordField1.setText(LG.getSifre());
-        jCheckBox1.setSelected(true);
-        }
-        } catch (Exception e) {
-        }
+             
         
     }
 

@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OOP_Object_Abstract_Interface;
+package Modeller;
 
 /**
  *
  * @author vektorel
  */
-public class kisi {
-    private int id;
+public class tblegitimgrubu {
+    private long id;
     private String adi;
+    private long egitimmoduluid;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -28,5 +29,14 @@ public class kisi {
     public void setAdi(String adi) {
         this.adi = adi;
     }
+
+    public long getEgitimmoduluid() {
+        return egitimmoduluid;
+    }
+
+    public void setEgitimmoduluid(long egitimmoduluid) {
+        this.egitimmoduluid = egitimmoduluid;
+    }
+    
     
 }

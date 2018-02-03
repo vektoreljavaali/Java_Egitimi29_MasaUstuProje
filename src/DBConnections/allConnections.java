@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OOP_Object_Abstract_Interface;
+package DBConnections;
 
 /**
  *
  * @author vektorel
  */
-public interface IDBIslem {
-    
-    public void Kaydet(Object o);
-    
+public class allConnections {
     
 }
