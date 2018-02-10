@@ -12,8 +12,8 @@ import java.util.Date;
  * @author vektorel
  */
 public class tblmusteri {
-    private long id;
-    private long tckimlik;
+    private int id;
+    private String tckimlik;
     private String ad;
     private String soyad;
     private String cinsiyet;
@@ -23,19 +23,19 @@ public class tblmusteri {
     private String resim;
     private String saglikdurumu;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getTckimlik() {
+    public String getTckimlik() {
         return tckimlik;
     }
 
-    public void setTckimlik(long tckimlik) {
+    public void setTckimlik(String tckimlik) {
         this.tckimlik = tckimlik;
     }
 
