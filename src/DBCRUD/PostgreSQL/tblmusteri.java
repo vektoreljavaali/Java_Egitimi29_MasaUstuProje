@@ -39,7 +39,7 @@ public class tblmusteri implements ICRUD{
             ifade.setString(3,musteri.getSoyad() );
             System.out.println(ifade.toString());        
             ifade.executeUpdate();
-             
+            baglanti.ConnClose();
        
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(tblmusteri.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,7 +63,7 @@ public class tblmusteri implements ICRUD{
             ifade.setInt(4, musteri.getId());
             System.out.println(ifade.toString());        
             ifade.executeUpdate();
-             
+               baglanti.ConnClose();
        
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(tblmusteri.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,7 +78,7 @@ public class tblmusteri implements ICRUD{
             PreparedStatement  ifade = baglanti.baglan().prepareCall("delete from tblmusteri where id=?");
             ifade.setInt(1, (int)id);
             ifade.executeUpdate();
-             
+               baglanti.ConnClose();
        
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(tblmusteri.class.getName()).log(Level.SEVERE, null, ex);
@@ -103,7 +103,7 @@ public class tblmusteri implements ICRUD{
              item.setSoyad(rs.getString("soyad"));
              musterilistesi.add(item);
              }
-             
+              baglanti.ConnClose(); 
        
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(tblmusteri.class.getName()).log(Level.SEVERE, null, ex);
@@ -127,7 +127,7 @@ public class tblmusteri implements ICRUD{
             musteri.setAd(rs.getString("ad"));
             musteri.setSoyad(rs.getString("soyad"));
             musteri.setTckimlik(rs.getString("tckimlik"));
-            
+            musteri.setId(rs.getInt("id"));
             }
         
         } catch (ClassNotFoundException ex) {

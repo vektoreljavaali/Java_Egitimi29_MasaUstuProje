@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class allConnections {
     
     
-  
+    Connection baglanti;
     public Connection baglan() throws ClassNotFoundException, SQLException{
     if(staticValues.isDB==0) return pgSQLBaglan();
     else if(staticValues.isDB==1) return OracleBaglan();
@@ -26,6 +26,9 @@ public class allConnections {
     
     }
     
+    public void ConnClose() throws SQLException{
+    baglanti.close();
+    }
     
     private Connection pgSQLBaglan() throws ClassNotFoundException, SQLException{
     
@@ -33,7 +36,7 @@ public class allConnections {
         Class.forName(staticValues.getPgSQL().getDriverName());
              
         // ilgili veri tabanına bağlantı için bağlantıcümlesi yazılır.        
-        Connection baglanti=DriverManager.getConnection(
+        baglanti=DriverManager.getConnection(
                 "jdbc:postgresql://"+staticValues.getPgSQL().getIpAdress()+
                 ":"+staticValues.getPgSQL().getPort()+"/"+staticValues.getPgSQL().getDateBase()+"", 
                 staticValues.getPgSQL().getUserName(), 
