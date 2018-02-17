@@ -12,6 +12,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -21,11 +22,11 @@ import javax.swing.table.TableModel;
  */
    
         
-public class frmMNusteri extends javax.swing.JFrame {
+public class frmMusteri extends javax.swing.JFrame {
   DBCRUD.PostgreSQL.tblmusteri mst = new tblmusteri();
  Modeller.tblmusteri musteri;
   /** Creates new form frmMNusteri */
-    public frmMNusteri() {
+    public frmMusteri() {
         initComponents();
         tabloDoldur();
         
@@ -79,6 +80,11 @@ public class frmMNusteri extends javax.swing.JFrame {
         jPopupMenu1.add(Duzenle);
 
         Sil.setText("Sil");
+        Sil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SilActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(Sil);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,9 +113,7 @@ public class frmMNusteri extends javax.swing.JFrame {
 
         jLabel8.setText("Sağlık Durumu");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\vektorel\\Desktop\\peoplefsdfdfsdf.png")); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 120, 130));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 130, 130));
 
         txtkimlik.setEditable(false);
         txtkimlik.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -219,12 +223,12 @@ public class frmMNusteri extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 460, 350));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 510, 360));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 51, 51));
         jLabel10.setText("X");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -266,6 +270,13 @@ public class frmMNusteri extends javax.swing.JFrame {
        Guncelle();
     }//GEN-LAST:event_btnDuzenleActionPerformed
 
+    private void SilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SilActionPerformed
+        
+      int id;
+      id = (int)jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 4);
+       
+    }//GEN-LAST:event_SilActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -283,20 +294,21 @@ public class frmMNusteri extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMNusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMNusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMNusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMNusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMusteri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMNusteri().setVisible(true);
+                new frmMusteri().setVisible(true);
             }
         });
     }
@@ -416,6 +428,14 @@ public class frmMNusteri extends javax.swing.JFrame {
      mst.Duzenle(musteri);
              
      tabloDoldur();
+    }
+    
+    public void Sil(int id){
+        int onay = JOptionPane.showConfirmDialog(null, "Seçilen Kaydı Silmek İstiyor musunuz?", "UYARI!!!", JOptionPane.YES_NO_OPTION);
+        if(onay==JOptionPane.YES_OPTION)
+        mst.Sil(id);
+        else
+            JOptionPane.showInputDialog("Silme işlemi iptal edilmiştir.");
     }
     
     
