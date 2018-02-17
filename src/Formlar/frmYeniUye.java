@@ -8,7 +8,7 @@ package Formlar;
 import java.util.ArrayList;
 
 import ExtraComponents.Autocomplete;
-import javax.swing.KeyStroke;
+import java.util.List;
 
 /**
  *
@@ -22,23 +22,23 @@ public class frmYeniUye extends javax.swing.JFrame {
      */
     public frmYeniUye() {
         initComponents();
-       otogiris();
+        otogiris();
     }
 
-    public void otogiris(){
-    jTextField1.setFocusTraversalKeysEnabled(false);
-    ArrayList<String> keywords = new ArrayList<String>(5);
-        keywords.add("example");
-        keywords.add("autocomplete");
-        keywords.add("stackabuse");
-        keywords.add("java");
-Autocomplete autoComplete = new Autocomplete(jTextField1, keywords);
-jTextField1.getDocument().addDocumentListener(autoComplete);
+    public final void otogiris(){
+   // jTextField2.setFocusTraversalKeysEnabled(false);
+    List<String> keywords = new ArrayList<String>(5);
+        keywords.add("muhammet ali");
+        keywords.add("ahmet ");
+        keywords.add("selim");
+        keywords.add("kemal");
+Autocomplete autoComplete = new Autocomplete(jTextField2, keywords);
+jTextField2.getDocument().addDocumentListener(autoComplete);
 
 // Maps the tab key to the commit action, which finishes the autocomplete
 // when given a suggestion
-jTextField1.getInputMap().put(KeyStroke.getKeyStroke("TAB"), COMMIT_ACTION);
-jTextField1.getActionMap().put(COMMIT_ACTION, autoComplete.new CommitAction());
+//jTextField2.getInputMap().put(KeyStroke.getKeyStroke("TAB"), COMMIT_ACTION);
+//jTextField2.getActionMap().put(COMMIT_ACTION, autoComplete.new CommitAction());
     }
     
     
@@ -74,6 +74,8 @@ jTextField1.getActionMap().put(COMMIT_ACTION, autoComplete.new CommitAction());
         jTextField8 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -134,6 +136,11 @@ jTextField1.getActionMap().put(COMMIT_ACTION, autoComplete.new CommitAction());
         jTextPane1.setBackground(new java.awt.Color(255, 255, 204));
         jScrollPane1.setViewportView(jTextPane1);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Find User Male_100px.png"))); // NOI18N
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Contact_96px.png"))); // NOI18N
+        jButton2.setText("Yeni Müşteri");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -170,13 +177,22 @@ jTextField1.getActionMap().put(COMMIT_ACTION, autoComplete.new CommitAction());
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 33, Short.MAX_VALUE)))))
+                                .addGap(0, 33, Short.MAX_VALUE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel12)
@@ -221,7 +237,7 @@ jTextField1.getActionMap().put(COMMIT_ACTION, autoComplete.new CommitAction());
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -341,6 +357,8 @@ jTextField1.getActionMap().put(COMMIT_ACTION, autoComplete.new CommitAction());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
